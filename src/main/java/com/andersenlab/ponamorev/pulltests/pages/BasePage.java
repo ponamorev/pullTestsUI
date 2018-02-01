@@ -168,16 +168,15 @@ public class BasePage {
     }
 
     /**
-     * Check that user is authorized
+     * Check that user is not authorized
      * @return
      */
-    public boolean isUserAuthorized() {
+    public boolean isUserNotAuthorized() {
         try {
             userNameTitle.isDisplayed();
-            return true;
-        } catch (Exception e) {
-            System.err.println("User is not authorized");
             return false;
+        } catch (Exception e) {
+            return true;
         }
     }
 
@@ -217,7 +216,7 @@ public class BasePage {
     /**
      * Click more language button
      */
-    public void clickMoreLanguageButton() {
+    public void clickMoreLanguagesButton() {
         moreLanguageButton.click();
     }
 

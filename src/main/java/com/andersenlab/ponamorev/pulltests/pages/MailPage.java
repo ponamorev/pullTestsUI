@@ -1,5 +1,6 @@
 package com.andersenlab.ponamorev.pulltests.pages;
 
+import com.andersenlab.ponamorev.pulltests.data.LoginPasswordData;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
@@ -9,7 +10,7 @@ public class MailPage extends BasePage {
     @FindBy(css = "*[data-metric='Выход']")
     private WebElement logoutButton;
 
-    private String correctLogin = "AutotestUser";
+    private String correctLogin = LoginPasswordData.BOTHVALIDVALUE.getLogin();
 
 
 

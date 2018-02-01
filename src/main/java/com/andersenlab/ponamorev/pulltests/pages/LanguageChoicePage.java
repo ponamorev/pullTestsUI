@@ -29,7 +29,7 @@ public class LanguageChoicePage extends BasePage {
     }
 
     /**
-     * Check that needed language is enabled
+     * Check that English language is enabled
      * @return
      */
     public boolean isNeededLanguageEnabled() {
@@ -42,7 +42,7 @@ public class LanguageChoicePage extends BasePage {
     }
 
     /**
-     * Click needed language
+     * Click English language
      */
     public void clickNeededLanguage() {
         neededLanguageButton.click();

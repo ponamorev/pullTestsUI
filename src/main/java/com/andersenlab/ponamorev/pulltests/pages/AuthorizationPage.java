@@ -1,5 +1,6 @@
 package com.andersenlab.ponamorev.pulltests.pages;
 
+import com.andersenlab.ponamorev.pulltests.data.MessagesErrorData;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
@@ -7,8 +8,8 @@ public class AuthorizationPage extends BasePage {
     @FindBy(className = "passport-Domik-Form-Error")
     private WebElement messageAboutInvalidPasswordOrAccount;
 
-    private String loginError = "Такого аккаунта нет";
-    private String passwordError = "Неверный пароль";
+    private String loginError = MessagesErrorData.LOGIN_ERROR.getMessage();
+    private String passwordError = MessagesErrorData.PASSWORD_ERROR.getMessage();
 
 
 
