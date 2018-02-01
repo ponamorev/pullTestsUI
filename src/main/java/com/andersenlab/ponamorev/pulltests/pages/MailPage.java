@@ -5,12 +5,12 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 public class MailPage extends BasePage {
-    @FindBy(className = "mail-User-Name")
+    @FindBy(css = "*[data-key='view=head-user'] .mail-User-Name")
     private WebElement userName;
     @FindBy(css = "*[data-metric='Выход']")
     private WebElement logoutButton;
 
-    private String correctLogin = LoginPasswordData.BOTHVALIDVALUE.getLogin();
+    private String correctLogin = LoginPasswordData.VALID_VALUES.getLogin();
 
 
 
@@ -26,6 +26,7 @@ public class MailPage extends BasePage {
      * Click logout
      */
     public void clickLogoutButton() {
+        userName.click();
         logoutButton.click();
     }
 }

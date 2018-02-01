@@ -74,7 +74,7 @@ public class BasePage {
      * Initialisation of all elements from this page
      * @param driver
      */
-    private void init(final WebDriver driver) {
+    void init(final WebDriver driver) {
         PageFactory.initElements(driver, this);
     }
 
@@ -226,5 +226,20 @@ public class BasePage {
      */
     public boolean isChosenLanguageNotCorrected() {
         return !neededLanguage.equals(actualLanguage.getText());
+    }
+
+    /**
+     * Check that geo link is enabled
+     * @return
+     */
+    public boolean isGeoLinkEnabled() {
+        return geoLink.isEnabled();
+    }
+
+    /**
+     * Click geo link
+     */
+    public void clickGeoLink() {
+        geoLink.click();
     }
 }

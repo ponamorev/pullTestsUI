@@ -179,4 +179,21 @@ public class BaseSteps {
         assertTrue("Выбранный язык совпадает с действительным",
                 basePage.isChosenLanguageNotCorrected());
     }
+
+    /**
+     * Check that geo link is enabled
+     */
+    @Step("Проверяется, что ссылка на изменение геолокации доступна")
+    public void geoLocationShouldBeEnabled() {
+        assertTrue("Ссылка на изменение геолокации не доступна",
+                basePage.isGeoLinkEnabled());
+    }
+
+    /**
+     * Click geo link
+     */
+    @Step("Нажимается кнопка изменение геолокации")
+    public void clickGeoLink() {
+        basePage.clickGeoLink();
+    }
 }

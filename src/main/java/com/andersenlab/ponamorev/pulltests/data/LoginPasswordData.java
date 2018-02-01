@@ -1,7 +1,7 @@
 package com.andersenlab.ponamorev.pulltests.data;
 
 public enum LoginPasswordData {
-    BOTHVALIDVALUE("AutotestUser", "AutotestUser123"),
+    VALID_VALUES("AutotestUser", "AutotestUser123"),
     INVALIDLOGIN("NoAutotestUser", "AutotestUser123"),
     INVALIDPASSWORD("AutotestUser", "NoAutotestUser123");
 
