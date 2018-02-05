@@ -1,5 +1,6 @@
 package com.andersenlab.ponamorev.pulltests.pages;
 
+import com.andersenlab.ponamorev.pulltests.Driver;
 import com.andersenlab.ponamorev.pulltests.data.MessagesErrorData;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -18,6 +19,7 @@ public class AuthorizationPage extends BasePage {
      * @return
      */
     public boolean isErrorMessageDisplayed() {
+        init(Driver.getDriver());
         return messageAboutInvalidPasswordOrAccount.isDisplayed();
     }
 

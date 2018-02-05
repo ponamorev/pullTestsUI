@@ -1,11 +1,12 @@
 package com.andersenlab.ponamorev.pulltests.pages;
 
+import com.andersenlab.ponamorev.pulltests.Driver;
 import com.andersenlab.ponamorev.pulltests.data.LoginPasswordData;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 public class MailPage extends BasePage {
-    @FindBy(css = "*[data-key='view=head-user'] .mail-User-Name")
+    @FindBy(css = ".mail-User-Name")
     private WebElement userName;
     @FindBy(css = "*[data-metric='Выход']")
     private WebElement logoutButton;
@@ -26,6 +27,7 @@ public class MailPage extends BasePage {
      * Click logout
      */
     public void clickLogoutButton() {
+        init(Driver.getDriver());
         userName.click();
         logoutButton.click();
     }

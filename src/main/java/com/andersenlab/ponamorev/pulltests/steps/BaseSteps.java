@@ -1,14 +1,16 @@
 package com.andersenlab.ponamorev.pulltests.steps;
 
+import com.andersenlab.ponamorev.pulltests.Driver;
 import com.andersenlab.ponamorev.pulltests.data.LoginPasswordData;
 import com.andersenlab.ponamorev.pulltests.pages.BasePage;
 import net.thucydides.core.annotations.Step;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 public class BaseSteps {
 
-    private final BasePage basePage = new BasePage();
+    private static final BasePage basePage = new BasePage();
 
 
 
@@ -18,6 +20,14 @@ public class BaseSteps {
     @Step("Ожидается загрузка страницы")
     public void waitUntilPageLoaded() {
         basePage.wailUntilPageLoaded();
+    }
+
+    /**
+     * Initialisation of page
+     */
+    @Step("Инициализируется страницы")
+    public void init() {
+        basePage.init(Driver.getDriver());
     }
 
     /**
@@ -130,6 +140,15 @@ public class BaseSteps {
     }
 
     /**
+     * Check that user is authorized
+     */
+    @Step("Пользователь авторизован")
+    public void userShouldBeAuthorized() throws Exception {
+        if (!basePage.isUserNotAuthorized())
+            throw new Exception();
+    }
+
+    /**
      * Come back to start page
      */
     @Step("Возврат на начальную страницу")
@@ -142,8 +161,8 @@ public class BaseSteps {
      */
     @Step("Местоположение должно быть в Минске")
     public void geoLocationShouldBeCorrect() {
-        assertTrue("Местоположение не в Минске",
-                basePage.isGeoLocationCorrected());
+            assertTrue("Местоположение не в Минске",
+                    basePage.isGeoLocationCorrected());
     }
 
     /**
@@ -195,5 +214,22 @@ public class BaseSteps {
     @Step("Нажимается кнопка изменение геолокации")
     public void clickGeoLink() {
         basePage.clickGeoLink();
+    }
+
+    /**
+     * Check that city is correct
+     */
+    @Step("Проверяется, что текущий город - <{0}>")
+    public void cityShouldBeCorrect() throws Exception {
+        if (!basePage.correctGeoLocation.equals(basePage.getActualCity()))
+            throw new Exception();
+   }
+
+    /**
+     * Click mail button
+     */
+    @Step("Нажимается кнопка почты и открывается страница почты")
+    public void clickMailButton() {
+        basePage.clickMail();
     }
 }

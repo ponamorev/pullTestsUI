@@ -47,8 +47,10 @@ public class BasePage {
     private WebElement geoLink;
     @FindBy(css = "*[title='Выбрать язык'] .link__inner")
     private WebElement actualLanguage;
+    @FindBy(className = "desk-notif-card__mail-title")
+    WebElement authorizedUser;
 
-    private String correctGeoLocation = "Минск";
+    public String correctGeoLocation = "Минск";
     private String neededLanguage = "Eng";
 
 
@@ -67,14 +69,13 @@ public class BasePage {
         } catch (Exception e) {
             System.err.println(String.format("Страница \"%s\" не загружена", Driver.getDriver().getTitle()));
         }
-        init(Driver.getDriver());
     }
 
     /**
      * Initialisation of all elements from this page
      * @param driver
      */
-    void init(final WebDriver driver) {
+    public void init(WebDriver driver) {
         PageFactory.initElements(driver, this);
     }
 
@@ -83,6 +84,7 @@ public class BasePage {
      * @return
      */
     public boolean isLoginFieldEnabled() {
+        init(Driver.getDriver());
         return loginField.isEnabled();
     }
 
@@ -241,5 +243,20 @@ public class BasePage {
      */
     public void clickGeoLink() {
         geoLink.click();
+    }
+
+    /**
+     * Get actual city
+     * @return
+     */
+    public String getActualCity() {
+        return geoLink.getText();
+    }
+
+    /**
+     * Move to mail page if user is authorized
+     */
+    public void clickMail() {
+        authorizedUser.click();
     }
 }

@@ -8,11 +8,11 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class GeoLocationPage extends BasePage {
     @FindBy(id = "city__front-input")
-    WebElement cityField;
-    @FindBy(css = ".popup__items li:first-child")
-    WebElement firstElementFromDropDownMenuCityField;
+    private WebElement cityField;
+    @FindBy(xpath = "//div[text()='Минск']")
+    private WebElement cityFromDropDownList;
     @FindBy(css = ".button.form__save")
-    WebElement saveButton;
+    private WebElement saveButton;
 
 
 
@@ -45,7 +45,7 @@ public class GeoLocationPage extends BasePage {
      */
     public void enterCity(String city) {
         cityField.sendKeys(city);
-        new WebDriverWait(Driver.getDriver(), 5).until(ExpectedConditions.visibilityOf(firstElementFromDropDownMenuCityField));
+        new WebDriverWait(Driver.getDriver(), 5).until(ExpectedConditions.visibilityOf(cityFromDropDownList));
     }
 
     /**
@@ -53,7 +53,7 @@ public class GeoLocationPage extends BasePage {
      */
     public void clickTopElementFromCitiesDropDownList() {
         init(Driver.getDriver());
-        new WebDriverWait(Driver.getDriver(), 5).until(ExpectedConditions.visibilityOf(firstElementFromDropDownMenuCityField));
-        firstElementFromDropDownMenuCityField.click();
+        new WebDriverWait(Driver.getDriver(), 5).until(ExpectedConditions.visibilityOf(cityFromDropDownList));
+        cityFromDropDownList.click();
     }
 }

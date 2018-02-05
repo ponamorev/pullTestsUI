@@ -1,5 +1,6 @@
 package com.andersenlab.ponamorev.pulltests.steps;
 
+import com.andersenlab.ponamorev.pulltests.Driver;
 import com.andersenlab.ponamorev.pulltests.pages.AuthorizationPage;
 import net.thucydides.core.annotations.Step;
 
@@ -18,6 +19,15 @@ public class AuthorizationSteps extends BaseSteps {
     public void errorMessageShouldBeDisplayed() {
         assertTrue("Сообщение об ошибке не отображается",
                 authorizationPage.isErrorMessageDisplayed());
+    }
+
+    /**
+     * Page initialisation
+     */
+    @Override
+    @Step
+    public void init() {
+        authorizationPage.init(Driver.getDriver());
     }
 
     /**

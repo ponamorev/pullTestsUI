@@ -1,5 +1,6 @@
 package com.andersenlab.ponamorev.pulltests.steps;
 
+import com.andersenlab.ponamorev.pulltests.Driver;
 import com.andersenlab.ponamorev.pulltests.pages.GeoLocationPage;
 import net.thucydides.core.annotations.Step;
 
@@ -7,7 +8,7 @@ import static org.junit.Assert.assertTrue;
 
 public class GeoLocationSteps extends BaseSteps {
 
-    private final GeoLocationPage geoLocationPage = new GeoLocationPage();
+    private static final GeoLocationPage geoLocationPage = new GeoLocationPage();
 
 
 
@@ -18,6 +19,15 @@ public class GeoLocationSteps extends BaseSteps {
     public void cityFieldShouldBeEnabled() {
         assertTrue("Поле для ввода города не доступно",
                 geoLocationPage.isCityFieldEnabled());
+    }
+
+    /**
+     * Page initialisation
+     */
+    @Override
+    @Step
+    public void init() {
+        geoLocationPage.init(Driver.getDriver());
     }
 
     /**
